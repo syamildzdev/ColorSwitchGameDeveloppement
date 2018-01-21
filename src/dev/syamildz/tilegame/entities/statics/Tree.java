@@ -25,11 +25,11 @@ public class Tree extends StaticEntity {
 
 	@Override
 	public void render(Graphics g) {
-		g.drawImage(Assets.small_tree, (int) (x - handler.getGameCamera().getxOffset()), (int) (y - handler.getGameCamera().getyOffset()), null);
+		g.drawImage(Assets.player_walk[2], (int) (x - handler.getGameCamera().getxOffset()), (int) (y - handler.getGameCamera().getyOffset()), null);
 		g.setColor(Color.red);
 		//g.fillRect((int) x,(int) y, width, height);
-		g.fillRect((int) (x + bounds.x - handler.getGameCamera().getxOffset()), 
-			(int) (y + bounds.y - handler.getGameCamera().getyOffset()), bounds.width,  bounds.height );
+		//g.fillRect((int) (x + bounds.x - handler.getGameCamera().getxOffset()), 
+		//	(int) (y + bounds.y - handler.getGameCamera().getyOffset()), bounds.width,  bounds.height );
 			
 	}
 
