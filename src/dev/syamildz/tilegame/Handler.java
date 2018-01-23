@@ -2,6 +2,7 @@ package dev.syamildz.tilegame;
 
 import dev.syamildz.tilegame.gfx.GameCamera;
 import dev.syamildz.tilegame.input.KeyManager;
+import dev.syamildz.tilegame.input.MouseManager;
 import dev.syamildz.tilegame.worlds.World;
 
 public class Handler {
@@ -19,6 +20,10 @@ public class Handler {
 	
 	public KeyManager getKeyManager() {
 		return game.getKeyManager();
+	}
+	
+	public MouseManager getMouseManager() {
+		return game.getMouseManager();
 	}
 	
 	public int getWidth() {

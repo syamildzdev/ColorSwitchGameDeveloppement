@@ -11,6 +11,7 @@ import dev.syamildz.tilegame.gfx.GameCamera;
 import dev.syamildz.tilegame.gfx.ImageLoader;
 import dev.syamildz.tilegame.gfx.SpriteSheet;
 import dev.syamildz.tilegame.input.KeyManager;
+import dev.syamildz.tilegame.input.MouseManager;
 import dev.syamildz.tilegame.states.GameState;
 import dev.syamildz.tilegame.states.MenuState;
 import dev.syamildz.tilegame.states.State;
@@ -27,11 +28,12 @@ public class Game implements Runnable{
 	private Graphics g;
 	
 	// States
-	private State gameState;
-	private State menuState;
+	public State gameState; // set to public for easier access reason
+	public State menuState;
 	
 	// Input
 	private KeyManager keyManager;
+	private MouseManager mouseManager;
 	
 	// Camera 
 	private GameCamera gameCamera;
@@ -44,11 +46,16 @@ public class Game implements Runnable{
 		this.height = height;
 		this.title = title;
 		keyManager = new KeyManager();
+		mouseManager = new MouseManager();
 	}
 	
 	public void init() {
 		display = new Display(title, width, height);
 		display.getFrame().addKeyListener(keyManager);
+		display.getFrame().addMouseListener(mouseManager);
+		display.getFrame().addMouseMotionListener(mouseManager);
+		display.getCanvas().addMouseListener(mouseManager);
+		display.getCanvas().addMouseMotionListener(mouseManager);
 		Assets.init();
 
 		handler = new Handler(this);
@@ -56,7 +63,7 @@ public class Game implements Runnable{
 		
 		gameState = new GameState(handler);
 		menuState = new MenuState(handler);
-		State.setState(gameState);
+		State.setState(menuState);
 	}
 	
 	public void tick() {
@@ -129,6 +136,10 @@ public class Game implements Runnable{
 	
 	public KeyManager getKeyManager() {
 		return keyManager;
+	}
+	
+	public MouseManager getMouseManager() {
+		return mouseManager;
 	}
 	
 	public GameCamera getGameCamera() {
