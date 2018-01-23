@@ -9,10 +9,12 @@ public class Assets {
 
 	public static BufferedImage ground, dirt, rock, bushes, tree, small_tree;
 	public static BufferedImage[] player_walk, player_highkick, player_twosideatk, player_uppercut, player_roundkick;
+	public static BufferedImage[] btn_start;
 	
 	public static void init() {
 		SpriteSheet worldSheet = new SpriteSheet(ImageLoader.LoadImage("/textures/tiles2.png")); 
 		SpriteSheet animSheet = new SpriteSheet(ImageLoader.LoadImage("/textures/catAnim.png")); 
+		SpriteSheet uiSheet = new SpriteSheet(ImageLoader.LoadImage("/textures/ui.jpg"));
 		
 		bushes = worldSheet.crop(0, 0, width, height);
 		dirt = worldSheet.crop(width, 0, width, height);
@@ -20,6 +22,11 @@ public class Assets {
 		rock = worldSheet.crop(0, height, width, height);
 		tree = worldSheet.crop(width, height, width, 90);
 		small_tree = worldSheet.crop(width * 2, height, width, height); // ok
+		
+		btn_start = new BufferedImage[2];
+		// 190.50
+		btn_start[0] = uiSheet.crop(0, 0, 190, 50);
+		btn_start[1] = uiSheet.crop(0, 60, 190, 50);
 		
 		player_walk = new BufferedImage[8];
 		player_highkick = new BufferedImage[6];
